@@ -221,19 +221,6 @@ function normalizePhone(phone) {
         .replace(/^0/, "62");
 }
 
-function isGroupMessage(payload) {
-    const candidates = [
-        payload?.chat_id,
-        payload?.from,
-        payload?.chat?.id,
-        payload?.remote_jid,
-        payload?.sender?.chat_id,
-    ];
-
-    return candidates.some(value => {
-        return String(value || "").includes("@g.us");
-    });
-}
 
 function randomNumber(min, max) {
     return Math.floor(
@@ -1336,23 +1323,6 @@ app.post(
                     });
             }
 
-            /**
-                 * Ignore group messages
-                 */
-                if (isGroupMessage(payload)) {
-                    console.log("\n👥 GROUP MESSAGE DETECTED");
-                    console.log("Chat ID:", payload.chat_id);
-                    console.log("From:", payload.from);
-                    console.log("⏭️ AI reply SKIPPED");
-
-                    return res
-                        .status(200)
-                        .json({
-                            success: true,
-                            ignored: true,
-                            reason: "group message",
-                        });
-                }
 
             /**
              * Extract message
