@@ -1492,6 +1492,7 @@ app.post(
              * ======================================
              */
 
+            /*             
             const autoReply =
                 detectAutoReply(
                     message
@@ -1520,14 +1521,11 @@ app.post(
                     "⏸️ AI reply SKIPPED"
                 );
 
-                /**
-                 * IMPORTANT:
-                 * Do not add this as normal
-                 * customer conversation.
-                 */
+               
 
                 return;
-            }
+            } 
+            */
 
 
             /**
